@@ -106,7 +106,11 @@ public class Main
 //loop iterates over philosopher
         for (int i = 0; i < philosopher; i++)
         {
-            philosophers[i] = new Philosopher(i, chopsticks[i], chopsticks[(i + 1) % philosopher]);
+            if (i % 2 == 0) {
+                philosophers[i] = new Philosopher(i, chopsticks[(i + 1) % philosopher], chopsticks[i]);
+            }else {
+                philosophers[i] = new Philosopher(i, chopsticks[i], chopsticks[(i + 1) % philosopher]);
+            }
 //begins the execution of the thread
             philosophers[i].start();
         } //end of for loop

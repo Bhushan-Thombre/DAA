@@ -11,7 +11,7 @@ public class Main {
 
     // Time Complexity = O(n * W)
     // Space Complexity = O(n * W)
-    static int dp(int W, int[] wt, int[] val, int n) {
+    public static int dp(int W, int[] wt, int[] val, int n) {
         int[][] table = new int[n + 1][W + 1];
         for (int i = 0; i <= n; i++) {
             table[i][0] = 0;
@@ -24,7 +24,7 @@ public class Main {
                 if (wt[i - 1] > j) {
                     table[i][j] = table[i - 1][j];
                 }else {
-                    table[i][j] = Math.max(val[i - 1] + table[i - 1][j - wt[i - 1]], table[i - 1][j]);
+                    table[i][j] = Math.max(table[i - 1][j], val[i - 1] + table[i - 1][j - wt[i - 1]]);
                 }
             }
         }
@@ -33,7 +33,7 @@ public class Main {
 
     // Time Complexity = O(2^n)
     // Space Complexity = O(1)
-    static int recursion(int W, int[] wt, int[] val, int n) {
+    public static int recursion(int W, int[] wt, int[] val, int n) {
         if (n == 0 || W == 0) {
             return 0;
         }
@@ -48,9 +48,9 @@ public class Main {
         int[] wt = { 5, 4, 6, 3 };
         int W = 10;
         int n = 4;
-        System.out.println("Using Recursion");
-        System.out.println("Maximum Value: " + recursion(W, wt, val, n));
-        System.out.println("Using Dynamic Programming");
-        System.out.println("Maximum Value: " + dp(W, wt, val, n));
+        System.out.println("Maximum value using recursion");
+        System.out.println(recursion(W, wt, val, n));
+        System.out.println("Maximum value using dynamic programming");
+        System.out.println(dp(W, wt, val, n));
     }
 }

@@ -91,3 +91,6 @@ public class Main {
         }
     }
 }
+
+// Time Complexity = O(MAX * MAX);
+// Space Complexity = O(MAX * MAX);
